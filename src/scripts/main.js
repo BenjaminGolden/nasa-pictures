@@ -1,20 +1,19 @@
-/**
- * Main logic module for what should happen on initial page load for SpacePics
- */
+import { getSpacePics } from "./data/DataManager.js"
+import { Space } from "./Space.js"
 
-//Get a reference to the location on the DOM where the app will display
-let postElement = document.querySelector(".postList");
-let navElement = document.querySelector("nav");
-let entryElement = document.querySelector(".entryForm")
-
-/*
-    This function performs one, specific task.
-
-    1. Can you explain what that task is?
-    2. Are you defining the function here or invoking it?
-*/
 const startSpacePics = () => {
-	postElement.innerHTML = "Hello Cohort 47"
+    const spaceElement = document.querySelector(".spaceList");
+    getSpacePics().then((spaceObj) => {
+        let type = ""
+        if (spaceObj.media_type === "video"){
+            type="video"
+        }else {
+            type="img"
+        }
+        spaceElement.innerHTML = Space(spaceObj, type)
+
+    })
 }
-// Are you defining the function here or invoking it?
+
+
 startSpacePics();

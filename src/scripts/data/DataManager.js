@@ -1,9 +1,9 @@
 export const getSpacePics = () => {
 
-    return fetch("http://localhost:8088/users")
+    return fetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY")
     .then(response => response.json())
     .then(parsedResponse => {
-        // do something with response here
+       console.log(parsedResponse)
         return parsedResponse;
     })
 }
